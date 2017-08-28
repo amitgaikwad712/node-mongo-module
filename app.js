@@ -3,7 +3,7 @@ var mongooseConnection;
 var dbvar;
 
 module.exports = {
-     connect: function() {
+     connect: function(data) {
    /*      mongooseConnection = Mongoose.connection;
          mongooseConnection.once('open', () => {
              console.log('Connected to its me.');
@@ -16,7 +16,7 @@ module.exports = {
          var db = mongoose.connection;
          var dbCollection = db.collections;
          var factory = new Factory(Schema,mongoose);
-         factory.createSchemas();
+         factory.createSchemas(data);
 
     },
     insertIntoDB: function(){
@@ -30,7 +30,7 @@ var Factory = function(Schema,mongoose) {
     this.mongoose = mongoose;
     this.Item = null;
 
-    this.createSchemas = function() {
+    this.createSchemas = function(data) {
         console.log("Is in CreateSchemas")
         var PersonSchema = new this.Schema({
             first_name: String,
@@ -39,6 +39,10 @@ var Factory = function(Schema,mongoose) {
             state: String
         });
         this.Person = mongoose.model('Person',PersonSchema);
+        this.Person.create(data,function(error,output) {
+            console.log("Inserted Successfully..");
+            console.log(JSON.stringify(output));
+        });
     };
 
     this.getPerson = function(query,res) {

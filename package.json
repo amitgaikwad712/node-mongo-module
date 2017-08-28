@@ -1,6 +1,6 @@
 {
   "name": "node-mongo-module",
-  "version": "1.0.10",
+  "version": "1.0.15",
   "description": "This package will usefull for use mongodb CRUD application with providing wrapper method for CRUD in your application ",
   "main": "app.js",
   "dependencies": {
@@ -21,6 +21,7 @@
     "module"
   ],
   "author": "Amit Gaikwad",
+  "email":"amitgaikwawd795@gmail.com",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/amitgaikwad712/node-mongo-module/issues"
