@@ -1,0 +1,19 @@
+import * as mongoose from 'mongoose';
+
+class UsesTracking{
+    static mongooseInstance : any;
+    static mongooseConnection: mongoose.Connection;
+
+    static connect(data: any): mongoose.Connection{
+        if (this.mongooseInstance) return this.mongooseInstance;
+        this.mongooseConnection = mongoose.connection;
+        this.mongooseConnection.once('open', () => {
+            console.log('Connected Uses Tracking');
+        });
+        this.mongooseInstance = mongoose.connect('mongodb://localhost:27017/uses-tracking');
+        return this.mongooseInstance;
+    }
+}
+
+export = UsesTracking;
+
